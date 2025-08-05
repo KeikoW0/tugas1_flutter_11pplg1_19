@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:latihan1_11pplg/register_page.dart';
+import 'package:latihan1_11pplg/widget/widget_button.dart';
+import 'package:latihan1_11pplg/widget/widget_textfield.dart';
 import 'dashboard_page.dart';
-import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -45,63 +47,47 @@ class _LoginPageState extends State<LoginPage> {
             // isian username
             Container(
               margin: EdgeInsets.only(top: 20),
-              child: TextField(
-                controller: usernameController,
-                decoration: InputDecoration(
-                  labelText: 'Username',
-                  hintText: 'Enter your username',
-                  border: OutlineInputBorder(),
-                ),
+              child: MyTextField(
+                textEditingController: usernameController,
+                labelText: "Input username",
               ),
             ),
 
-            // isian password, style : hint, hidden char for password
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 20),
-              child: TextField(
-                controller: passwordController,
-                obscureText: true, // Menyembunyikan karakter
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  hintText: 'Enter your password', // hint
-                  border: OutlineInputBorder(),
-                ),
-              ),
+            MyTextField(
+              textEditingController: passwordController,
+              labelText: "Input password",
             ),
 
             // button login, stylenya bebas
             Center(
-              child: ElevatedButton(
+              child: CustomButton(
+                text: "Login",
+                textColor: Colors.red,
                 onPressed: () {
-                  // jika username dan password adalah admin maka muncul snackbar sukses login
                   if (usernameController.text == "Admin" &&
                       passwordController.text == "admin") {
-                    setState(() {
-                      statusLogin = "Login Sukses";
-                      print(statusLogin);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const DashboardPage(),
-                        ),
-                      );
-                    });
+                    print("Sukses login, pindah tampilan");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const DashboardPage(),
+                      ),
+                    );
                   } else {
-                    setState(() {
-                      statusLogin = "Login Gagal";
-                      print(statusLogin);
-                    });
+                    print("Gagal login");
                   }
                 },
-                child: Text("Login"),
               ),
             ),
             Text(statusLogin),
 
             // button register
             Center(
-              child: TextButton(
+              child: CustomButton(
+                text: "Register",
+                textColor: Colors.green,
                 onPressed: () {
+                  print("Register");
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -109,10 +95,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   );
                 },
-                child: Text(
-                  "Register",
-                  style: TextStyle(decoration: TextDecoration.underline),
-                ),
               ),
             ),
           ],
