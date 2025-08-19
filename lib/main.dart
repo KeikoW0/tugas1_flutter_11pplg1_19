@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      initialRoute: AppRoutes.footballplayers,
+      initialRoute: AppRoutes.main,
       getPages: AppPages.pages,
     );
   }

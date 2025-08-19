@@ -76,7 +76,7 @@ class CalculatorPage extends StatelessWidget {
               text: "Move to Football Players",
               textColor: Colors.green,
               onPressed: () {
-                Get.toNamed(AppRoutes.footballplayers);
+                Get.toNamed(AppRoutes.footballplayer);
               },
             ),
           ],
